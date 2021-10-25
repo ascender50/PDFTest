@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        table {
+            border-collapse: collapse;
+          text-align:right;
+          margin:auto;
+          width:55%;
+        }
+          tr {
+            border-bottom: 1px solid black;
+          }
+          td {
+            padding-bottom: 15px;
+            padding-right: 10px;
+            padding-top: 15px;
+            text-align:right;
+            width:120px;
+          }
+          .doubleUnderline {
+            border-bottom: 4px double black;
+            width: 100%;
+            float:right;
+}
+          .singleUnderline {
+            border-bottom: 1.5px solid black;
+            width: 100%;
+}
+          .size{
+            width:100%;
+            float:right;
+          }
+          th{
+            text-align: left;
+            padding-right: 10px;
+          }
+          .dollarSignDU {
+            float:left;
+            border-bottom: 4px double black;
+          }
+          .dollarSign {
+            float:left;
+
+          }
+          .align{
+            display:flex;
+            display: -webkit-flex;
+            width: 100%;
+          }
+          .extraHeader{
+            text-align:center;
+          }
+        </style>
+    </head>
+
+    <body>
+        <div style="width: 100%;">
+            <div style="text-align: center;">            
+                <h3>Financial Report</h5>
+                <table>
+                  <tr>
+                    <td></td>
+                    <td class="extraHeader">LP</td>
+                    <td class="extraHeader">LP</td>
+                    <td class="extraHeader">Total Fund</td>
+                    <td class="extraHeader">Total Fund</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td class="extraHeader"> For the period ended September 30,2021</td>
+                    <td class="extraHeader"> From inception through June 30,2021</td>
+                    <td class="extraHeader"> For the period ended September 30,2021</td>
+                    <td class="extraHeader"> From Inception through June 30,2021</td>
+                  </tr>
+                  <tr>
+                    <th>Total Commitement</th>
+           <% if(totalCommitment.length > 0) {%>
+            <% totalCommitment.forEach(attempt => { %>
+                    <td> <div class="align"><div class = "dollarSignDU">
+                      $
+                      </div> <div class = "doubleUnderline">
+                      <%= attempt.num %>
+                      </div>
+                      </div>
+                      
+                    </td>
+<% }); %>
+<% } %>
+                    
+                  </tr>
+                   <tr>
+                     <th>Opening Capital Account</th>
+                     <% if(openingCapitalAccount.length > 0) {%>
+                        <% openingCapitalAccount.forEach(attempt => { %>
+                    <td><div class="align"><div class = "dollarSign">
+                      $
+                      </div><div class="size"><%= attempt.num %> </div> </div></td>
+                      
+                      <% }); %>
+<% } %>
+                   <tr>
+                     <th>Capital Contributions</th>
+                     <% if(capitalContributions.length > 0) {%>
+                        <% capitalContributions.forEach(attempt => { %>
+                    <td><%= attempt.num %></td>
+                    <% }); %>
+<% } %>
+                
+                   </tr>
+                   <tr>
+                     <th>Net Operating Income(Loss)</th>
+                     <% if(netOperatingIncome.length > 0) {%>
+                        <% netOperatingIncome.forEach(attempt => { %>
+                    <td><%= attempt.num %></td>
+                    <% }); %>
+<% } %>
+                   </tr>
+                   <tr>
+                     <th>Unrealized Investment Gain (Loss)</th>
+                     <% if(unrealizedInvestmentGain.length > 0) {%>
+                        <% unrealizedInvestmentGain.forEach(attempt => { %>
+                    <td><%= attempt.num %></td>
+                    <% }); %>
+                    <% } %>
+                   </tr>
+                   <tr>
+                     <th>Realized Investment Gain (Loss)</th>
+                     <% if(realizedInvestmentGain.length > 0) {%>
+                        <% realizedInvestmentGain.forEach(attempt => { %>
+                    <td><%= attempt.num %></td>
+                    <% }); %>
+                    <% } %>
+                   </tr>
+                   <tr>
+                     <th>Distributions</th>
+                     <% if(distributions.length > 0) {%>
+                        <% distributions.forEach(attempt => { %>
+                     <td><div class="singleUnderline"><%= attempt.num %></div></td>
+                     <% }); %>
+                     <% } %>
+                   </tr>
+                   <tr>
+                     <th>Closing Capital Account</th>
+                     <% if(closingCapitalAccount.length > 0) {%>
+                        <% closingCapitalAccount.forEach(attempt => { %>
+                     <td ><div class="align"><div class = "dollarSignDU">
+                      $
+                      </div><div class = "doubleUnderline"><%= attempt.num %> </div> </div></td>
+                      <% }); %>
+                      <% } %>
+                   <tr>
+                     <th>Remaining Unfunded Commitment</th>
+                     <% if(remainingUnfundedCommitment.length > 0) {%>
+                        <% remainingUnfundedCommitment.forEach(attempt => { %>
+                   
+                     <td><div class="align"><div class = "dollarSignDU">
+                      $
+                      </div><div class = "doubleUnderline"><%= attempt.num %> </div> </div></td>
+                      <% }); %>
+                      <% } %>
+                   </tr>
+                </table>
+             </div>
+        </div>
+    </body>
+</html>
